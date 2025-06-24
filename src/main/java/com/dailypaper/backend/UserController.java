@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestMapping; 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @RestController
 public class UserController {
+    UserService userService = new UserService();
+
 
     /**
      * This method handles HTTP GET requests for the "/users" endpoint
@@ -19,10 +22,7 @@ public class UserController {
      */
     @RequestMapping(method = RequestMethod.GET, path="/users")
     public ArrayList<String> getUsers() {
-        ArrayList<String> users = new ArrayList<>();
-        users.add("Alice");
-        users.add("Bob");
-        users.add("Charlie");
-        return users;
+        System.out.println("Received request for users in UserController");
+        return userService.getUsers();
     }
 }
